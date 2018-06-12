@@ -4,19 +4,19 @@
   "description": "A new electron helper for rapid and big development",
   "main": "main.js",
   "dependencies": {
-    "electron": "^2.0.2",
-    "electron-settings": "^3.2.0",
-    "eslint": "^4.19.1"
+    "electron-settings": "^3.2.0"
   },
   "devDependencies": {
-    "electron-package": "^0.1.0",
+    "electron": "^2.0.2",
+    "electron-packager": "^12.1.0",
+    "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1"
   },
   "scripts": {
     "start": "electron .",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"\"",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar --platform=win32 --arch=all --icon=assets/icons/windows.ico --prune=true --out=release-builds --version-string.CompanyName=%npm_package_winBuilder_company% --version-string.FileDescription=CE --version-string.ProductName=\"%npm_package_winBuilder_name%\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/linux.png --prune=true --out=release-builds"
   },
   "keywords": [
     "boilerplate",
@@ -27,12 +27,16 @@
     "template",
     "preset",
     "electron",
-    "preset",
+    "preset",   
     "template"
   ],
   "author": "Joey de Vries",
   "engines": {
     "node": ">=4.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "winBuilder": {
+    "name": "Electron Plus Demo",
+    "company": "XJoeyV.com"
+  }
 }
