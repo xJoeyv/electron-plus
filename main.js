@@ -1,7 +1,7 @@
 const url = require('url');
 const { ep } = require('./src/ElectronPlus');
-const {BrowserWindow, app} = require('electron');
-let main;
+const { BrowserWindow, app } = require('electron');
+let main = null;
 
 // Your Main BrowserWindow
 function createMainWindow() {
@@ -35,11 +35,6 @@ app.on('activate', () => {
     if (main === null) {
         createMainWindow()
     }
-});
-
-// Cheeky Fixes
-app.on('browser-window-created', (event,window) => {
-    // window.setMenu(null);
 });
 
 app.on('web-contents-created', (event, contents) => {
